@@ -1,0 +1,11 @@
+{
+  "description": {
+    "language": "dotnet-isolated",
+    "extensions": [ ".dll" ],
+    "defaultExecutablePath": "dotnet",
+    "defaultWorkerPath": "LeIAPortal.dll",
+    "workerIndexing": "true",
+    "canUsePlaceholder": true
+  }
+}
+
