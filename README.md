@@ -1,6 +1,6 @@
-# 🤖 LeIA - AI-Powered Assistant (Azure Serverless)
+# 🤖 LeIA - Multimodal AI-Powered Assistant (Azure Serverless)
 
-**LeIA** is a scalable, enterprise-grade intelligent assistant built on a **Serverless Architecture** using Microsoft Azure. This project implements real-time token streaming and automated session context management.
+**LeIA** is a scalable, enterprise-grade **Multimodal Assistant** built on a **Serverless Architecture** using Microsoft Azure. The system is capable of processing both **text and image inputs**, providing real-time streaming responses and automated session context management.
 
 ---
 
@@ -21,25 +21,26 @@ The frontend is a responsive chat interface that consumes the **Server-Sent Even
 When a new session starts, the assistant is ready to receive instructions with a clean, intuitive interface.
 
 ![Initial Interface](./docs/screenshot_storage.png)
-*Figure 2: Welcome screen ("Hi Stranger") and sidebar session management.*
+*Figure 2: Welcome screen and sidebar session management.*
 
-### **Technical Interaction**
-The assistant provides high-level technical explanations with real-time streaming, as seen in this interaction about Azure Function models.
+### **Multimodal Capabilities (Vision 🚀)**
+The assistant now supports **Computer Vision**. Users can upload images directly into the chat, which are processed via **Base64 encoding** and analyzed by the **GPT-4o-mini** model to provide context-aware insights.
 
 ![Chat Interaction](./docs/screenshot_chat.png)
-*Figure 3: Real-time token streaming and technical responsiveness.*
+*Figure 3: Real-time token streaming and multimodal responsiveness.*
 
 ---
 
 ## 🛠️ Key Components & Technologies
 
 ### **Backend Engineering**
-* **Azure Functions (.NET 8 Isolated Worker)**: High-performance ingestion layer using the latest isolated process model.
-* **C# / .NET 8**: Strongly typed logic ensuring reliability and clean architecture.
+* **Azure Functions (.NET 8 Isolated Worker)**: High-performance ingestion layer using the latest isolated process model for asynchronous tasks.
+* **C# / .NET 8**: Strongly typed logic ensuring reliability, clean architecture, and efficient memory management.
 
-### **AI & Data Management**
-* **AI Foundry (GPT-4o/mini)**: Optimized connectors for generating high-quality AI responses.
-* **Azure Table Storage**: Partitioned by `sessionId` for efficient and cost-effective context persistence.
+### **AI & Multimodality**
+* **Azure OpenAI / AI Foundry (GPT-4o-mini)**: Leveraging **Multimodal LLMs** to handle complex text instructions and image reasoning.
+* **Image Processing**: Custom backend logic for handling and preparing image buffers for AI inference.
+* **Azure Table Storage**: Partitioned by `sessionId` for efficient, low-cost persistence of chat history and multimodal context.
 
 ---
 
@@ -47,9 +48,9 @@ The assistant provides high-level technical explanations with real-time streamin
 
 Security was a priority in this architecture, following high standards for enterprise solutions:
 
-1. **Secret Management**: All sensitive data (API Keys) are stored in **Azure Key Vault**.
-2. **Managed Identity (MSI)**: Passwordless authentication between services.
-3. **Data Governance**: Implemented logic for data retention and PII masking.
+1. **Secret Management**: All sensitive data (API Keys, Endpoints) are securely stored and retrieved from **Azure Key Vault**.
+2. **Managed Identity (MSI)**: Implemented **Passwordless Authentication** between services (Functions -> Key Vault -> OpenAI), eliminating hardcoded credentials.
+3. **Data Governance**: Logic implemented for session isolation and data persistence.
 
 ---
 
